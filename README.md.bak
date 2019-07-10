@@ -1,1 +1,0 @@
-# thinkster.io.react-redux-app

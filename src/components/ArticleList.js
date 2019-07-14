@@ -1,7 +1,8 @@
 import React from 'react';
 
-const ArticleList = props => {
-    
+import ArticlePreview from './ArticlePreview';
+
+const ArticleList = props => {    
     if(typeof(props.articles) === 'undefined' || props.articles === null) {
         return (
             <div className="article-preview">Loading...</div>
@@ -19,7 +20,7 @@ const ArticleList = props => {
             {
                 props.articles.map(article => {
                     return (
-                        <h2>{article.title}</h2>
+                        <ArticlePreview article={article} key={article.slug}/>
                     );
                 })
             }

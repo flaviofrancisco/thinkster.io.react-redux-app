@@ -3,11 +3,12 @@ import  { connect } from 'react-redux';
 
 import ArticleList from '../ArticleList';
 
-const mapStateToProps = state => ({
+const mapStateToProps = state => ({    
     articles: state.articles
 })
 
 const MainView = props => {
+    debugger;
     return (
         <div className="col-md-9">
             <div className="feed-toggle">
@@ -16,7 +17,7 @@ const MainView = props => {
                         <a href="" className="nav-link active">Global Feed</a>
                     </li>
                 </ul>
-            </div>
+            </div>            
             <ArticleList articles={props.articles} />
         </div>
     )

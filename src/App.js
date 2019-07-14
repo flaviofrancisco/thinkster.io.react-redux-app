@@ -6,7 +6,7 @@ import Header from './components/Header';
 import Home from './components/Home';
 
 const mapStateToProps = state => ({
-   appName: state.appName
+   appName: state.common.appName
 });
 
 class App extends React.Component {

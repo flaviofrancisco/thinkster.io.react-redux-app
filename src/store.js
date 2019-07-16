@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
-import { promiseMiddleware } from './middleware';
+import { localStorageMiddleware, promiseMiddleware } from './middleware';
 
 import auth from './reducers/auth';
 import common from './reducers/common';
@@ -12,6 +12,6 @@ const reducer = combineReducers({
     home
 });
 
-const store = createStore(reducer, applyMiddleware(promiseMiddleware));
+const store = createStore(reducer, applyMiddleware(promiseMiddleware, localStorageMiddleware));
 
 export default store;

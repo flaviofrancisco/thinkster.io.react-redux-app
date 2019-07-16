@@ -7,8 +7,7 @@ const mapStateToProps = state => ({
     articles: state.home.articles
 })
 
-const MainView = props => {
-    debugger;
+const MainView = props => {    
     return (
         <div className="col-md-9">
             <div className="feed-toggle">

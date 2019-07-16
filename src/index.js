@@ -1,17 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router, Route } from 'react-router';
+import ReactDOM from 'react-dom';
+import React from 'react';
+import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import { HashRouter, BrowserRouter } from 'react-router-dom'
-
-import './index.css';
 
 import App from './App';
 import Home from './components/Home';
 import Login from './components/Login';
 import store from './store';
 
-ReactDOM.render(
+ReactDOM.render((
     <Provider store={store}>
         <BrowserRouter >                
             <App />
@@ -20,5 +18,5 @@ ReactDOM.render(
             </Route>
             <Route path="/login/" component={Login} />
         </BrowserRouter >
-    </Provider>, 
-    document.getElementById('root'));
+    </Provider>
+), document.getElementById('root'));

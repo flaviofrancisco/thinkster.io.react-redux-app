@@ -7,6 +7,8 @@ import { connect } from 'react-redux';
 
 import { Route, Switch } from 'react-router';
 import Login from './components/Login';
+import Register from './components/Register';
+import Settings from './components/Settings';
 
 const mapStateToProps = state => ({
   appName: state.common.appName,
@@ -48,6 +50,8 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component ={Home} />
           <Route path="/login/" component={Login} />
+          <Route path="/register/" component={Register} />
+          <Route path="/settings/" component={Settings} />
         </Switch>
         {this.props.children}
       </div>

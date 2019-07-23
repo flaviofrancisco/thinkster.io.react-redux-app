@@ -9,6 +9,7 @@ import { Route, Switch } from 'react-router';
 import Login from './components/Login';
 import Register from './components/Register';
 import Settings from './components/Settings';
+import Article from './components/Article';
 
 const mapStateToProps = state => ({
   appName: state.common.appName,
@@ -49,9 +50,10 @@ class App extends React.Component {
         appName={this.props.appName} />
         <Switch>
           <Route exact path="/" component ={Home} />
-          <Route path="/login/" component={Login} />
-          <Route path="/register/" component={Register} />
-          <Route path="/settings/" component={Settings} />
+          <Route path="login" component={Login} />
+          <Route path="register" component={Register} />
+          <Route path="settings" component={Settings} />
+          <Route path="article/:id" component={Article} />          
         </Switch>
         {this.props.children}
       </div>

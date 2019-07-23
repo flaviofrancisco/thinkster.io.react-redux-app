@@ -9,6 +9,8 @@ export default (state = {}, action) => {
                 password: null,
                 errors: action.error ? action.payload.errors : null                
             };
+        case 'DELETE_ARTICLE':
+                return { ...state, redirectTo: '/' };            
         case 'UPDATE_FIELD_AUTH':
                 return { ...state, [action.key]: action.value };
         case 'LOGIN_PAGE_UNLOADED':

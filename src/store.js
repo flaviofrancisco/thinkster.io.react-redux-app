@@ -1,21 +1,25 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux';
-import { localStorageMiddleware, promiseMiddleware } from './middleware';
+import { applyMiddleware, createStore } from 'redux';
+import { createLogger } from 'redux-logger'
+import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
+import { promiseMiddleware, localStorageMiddleware } from './middleware';
+import reducer from './reducer';
 
-import auth from './reducers/auth';
-import common from './reducers/common';
-import home from './reducers/home';
-import settings from './reducers/settings';
-import article from './reducers/article';
+import { routerMiddleware } from 'react-router-redux'
+import createHistory from 'history/createBrowserHistory';
 
+export const history = createHistory();
 
-const reducer = combineReducers({
-    auth,
-    common,
-    home,
-    settings,
-    article
-});
+// Build the middleware for intercepting and dispatching navigation actions
+const myRouterMiddleware = routerMiddleware(history);
 
-const store = createStore(reducer, applyMiddleware(promiseMiddleware, localStorageMiddleware));
+const getMiddleware = () => {
+  if (process.env.NODE_ENV === 'production') {
+    return applyMiddleware(myRouterMiddleware, promiseMiddleware, localStorageMiddleware);
+  } else {
+    // Enable additional logging in non-production environments.
+    return applyMiddleware(myRouterMiddleware, promiseMiddleware, localStorageMiddleware, createLogger())
+  }
+};
 
-export default store;
+export const store = createStore(
+  reducer, composeWithDevTools(getMiddleware()));
